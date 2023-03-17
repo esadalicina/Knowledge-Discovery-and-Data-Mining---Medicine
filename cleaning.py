@@ -43,7 +43,7 @@ class cleaning():
     def removeAllEmpty(self):
         pass
 
-    def removeAdmisionType_6_8(self):
+    def removeAdmissionType_6_8(self):
         pass
 
     def discharge_disposition_id_18_25_26(self):
@@ -86,14 +86,34 @@ class cleaning():
         self.repairKeyWord("payer_code")
         self.print_format()
 
+    def check_max(self):
+        parent = {}
+        max = 0
+        maxP = 0
+        for i,row in self.data.iterrows():
+            p = row["patient_nbr"]
+            if p in parent:
+                parent[p].append(p)
+                if len(parent[p]) > 2:
+                    print(p)
+                if len(parent[p]) > max:
+                    max = len(parent[p])
+                    maxP = p
+            else:
+                parent[p] = []
 
-"""
-counter = 0
-for i in person:
-    counter += 1
-    print(counter)
-    if len(person[i]) >= 2:
-        print(person[i])
-        break
-"""
+            print(maxP)
+            print(max)
 
+    def yeet(self):
+        for i,row in self.data.iterrows():
+            if row["patient_nbr"] == 88785891:
+                print(row)
+
+
+
+
+
+c = cleaning()
+c.print_format()
+c.yeet()
