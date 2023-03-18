@@ -146,6 +146,50 @@ E916 Struck accidently by falling object (from codebase)
 
 ## number of times
 
+# Data come from :
+http://www.icd9data.com/2014/Volume1/240-279/249-259/250/default.htm
+
+
+# Type 1 or 2? (0 unknown)
+
+Note a lot of 0 got trimmed
+
+| Syntax | Description |
+|--------|-------------|
+| 249    | 2           |
+| 250    | 2           |
+| 250.01 | 1           |
+| 250.1  | 2           |
+| 250.11 | 1           |
+| 250.12 | 2           |
+| 250.13 | 1           |
+| 250.2  | 2           |
+| 250.21 | 1           |
+| 250.22 | 2           |
+| 250.23 | 1           |
+| 250.3  | 2           |
+| 250.31 | 1           |
+| 250.32 | 2           |
+| 250.33 | 1           |
+| 250.4  | 2           |
+| 250.41 | 1           |
+| 250.42 | 2           |
+| 250.43 | 1           |
+| 250.5  | 2           |
+| 250.51 | 1           |
+| 250.52 | 2           |
+| 250.53 | 1           |
+| 250.6  | 2           |
+| 250.7  | 2           |
+| 250.8  | 2           |
+| 250.81 | 1           |
+| 250.82 | 2           |
+| 250.83 | 1           |
+| 250.9  | 2           |
+| 250.91 | 1           |
+| 250.92 | 2           |
+| 250.93 | 1           |
+
 
 # Clustering @Filip
 # Data anaylze based on the number of admission and on conditions on the dataset.
