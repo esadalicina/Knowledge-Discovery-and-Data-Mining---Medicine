@@ -3,9 +3,18 @@
 <head>
     <title>Interactive Graph</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+     <style>
+    .plot {
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 <body>
     <h1>Interactive Graph</h1>
     <div>{{ plot|safe }}</div>
+</body>
+<body>
+  {{ plot_div1|safe }}
+  {{ plot_div2|safe }}
 </body>
 </html>
