@@ -3,8 +3,7 @@
 ### removed examide
 ### removed citoglipton
 
-### removed troglitazone
-Steady or No
+
 ## Diag 1 2 3
 combine these into 1 filed : "Diabetes" if in 1 or 2 or 3 diabete then set field to true. Take them from
 ## Verify if change
@@ -124,7 +123,6 @@ readmitted                               NO
 
 # Creation of new field
 ## Diabetes Bool
-Based on ICD-10-CM skipped this as all data related to car accident
 Based on ICD-9-CM
 ### Type 1 or Type 2
 ## Ignored
@@ -189,6 +187,9 @@ Note a lot of 0 got trimmed
 | 250.91 | 1           |
 | 250.92 | 2           |
 | 250.93 | 1           |
+
+# weight patching
+https://www.cdc.gov/growthcharts/clinical_charts.htm
 
 
 # Clustering @Filip
