@@ -59,6 +59,7 @@ def distribution_change_medikament():
     plt.show()
 
 
+distribution_data("Data distribution")
 distribution_TwoCol("age","gender","Age-Gender Distribution")
 distribution_TwoCol("change","gender","Change-Gender Distribution")
 distribution_TwoCol("age","change","Age-Change Distribution")
