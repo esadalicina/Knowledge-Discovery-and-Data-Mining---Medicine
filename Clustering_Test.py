@@ -66,5 +66,5 @@ def clustering_data_method2_test():
     plt.show()
 
 
-clustering_data_method1_test()
+#clustering_data_method1_test()
 clustering_data_method2_test()
