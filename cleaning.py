@@ -192,7 +192,7 @@ class Cleaning:
         speciality_repaired = 0
         for i, row in self.data.iterrows():
             if row["age"] == "[0-10)" and row["medical_specialty"] == "?":
-                self.data.at[i, "medical_specialty"]= "Pediatrics"
+                self.data.at[i, "medical_specialty"] = "Pediatrics"
                 speciality_repaired += 1
         print("Repaired a total of {} speciality".format(speciality_repaired))
 
@@ -233,7 +233,7 @@ class Cleaning:
 
     def create_file_of_value(self):
         with open("Cleaned.csv", "w") as f:
-            self.data.to_csv(f)
+            self.data.to_csv(f, index=False,lineterminator='\n')
 
     def run_cleaning(self):
         self.sort()
@@ -332,7 +332,7 @@ class Cleaning:
             sex = row["gender"]
 
             if sex == "Male" and age == "[0-10)":
-                self.data.at[i,"Weigth_averaged"] = True
+                self.data.at[i, "Weigth_averaged"] = True
                 self.data.at[i, "weight"] = "[0-25)"
                 speciality_repaired += 1
             elif sex == "Male" and age == "[10-20)":
@@ -412,15 +412,15 @@ class Cleaning:
                 self.data.at[i, "weight"] = "[50-75)"
                 speciality_repaired += 1
             else:
-                print("Not found {}  {}".format(sex,age))
+                print("Not found {}  {}".format(sex, age))
 
             if row["age"] == "[0-10)" and row["medical_specialty"] == "?":
-                self.data.at[i, "medical_specialty"]= "Pediatrics"
+                self.data.at[i, "medical_specialty"] = "Pediatrics"
 
         print("Averaged a total of {} Weigths".format(speciality_repaired))
+
 
 
 c = Cleaning()
 c.run_cleaning()
 c.contradiction()
-

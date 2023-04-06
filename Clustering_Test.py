@@ -1,14 +1,15 @@
 import pandas as pd
 from matplotlib import pyplot as plt
 from sklearn.cluster import KMeans
+from sklearn.datasets import make_blobs
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
-
+from sklearn.metrics import silhouette_score
 
 
 def clustering_data_method1_test():
     df = pd.read_csv('Cleaned.csv')
     x = df.copy()
-    xx = x.drop(['id','patient_nbr'], axis=1)
+    xx = x.drop([ 'patient_nbr'], axis=1)
 
     features, clusters = make_blobs(n_samples=40782,
                                     n_features=40,
@@ -27,12 +28,12 @@ def clustering_data_method1_test():
     print(pd.DataFrame(features, columns=xx.columns).head())
     plt.scatter(features[:, 0], features[:, 1], c=labels)
     plt.show()
-    
+
 
 def clustering_data_method2_test():
     df = pd.read_csv('Cleaned.csv')
     x = df.copy()
-    xx = x.drop(['id', 'patient_nbr'], axis=1)
+    xx = x.drop([ 'patient_nbr'], axis=1)
 
     encoder = OneHotEncoder(sparse=False)
     gender_encoded = encoder.fit_transform(x.columns)
@@ -42,8 +43,6 @@ def clustering_data_method2_test():
     X_std = pd.DataFrame(X_std, columns=gender_encoded.columns)
 
     cluster_colors = ['#b4d2b1', '#568f8b', '#1d4a60', '#cd7e59', '#ddb247', '#d15252']
-
-    from sklearn.metrics import silhouette_score
 
     silhouette_scores = []
     for k in range(2, 7):
@@ -67,7 +66,5 @@ def clustering_data_method2_test():
     plt.show()
 
 
-def clustering_data_method1_test():
-def clustering_data_method2_test():
-
-
+clustering_data_method1_test()
+clustering_data_method2_test()
