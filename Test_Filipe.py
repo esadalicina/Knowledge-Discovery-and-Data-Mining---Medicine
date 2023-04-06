@@ -45,7 +45,7 @@ def index():
     # Create a histogram using Seaborn and save it to a file
 
 
-    with open("data.csv", "r") as f:
+    with open("Cleaned.csv", "r") as f:
         df = pd.read_csv(f)
     # Create a new column to group the ages
     df['age'] = df['age'].apply(convert_age_to_int)

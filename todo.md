@@ -194,3 +194,4 @@ https://www.cdc.gov/growthcharts/clinical_charts.htm
 
 # Clustering @Filip
 # Data anaylze based on the number of admission and on conditions on the dataset.
+# Create data anaylze precision and recall for wrong diagnose
