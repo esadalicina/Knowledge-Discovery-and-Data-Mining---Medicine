@@ -1,61 +1,126 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <div class="row">
+<div class="row">
     <div class="col-md-3">
-      <label for="lift_search">Search Lift:</label>
-      <input type="text" id="lift_search" name="lift_search" class="form-control form-control-sm">
+        <label for="lift_search">Filter Lift:</label>
+        <input type="text" id="lift_search" name="lift_search" class="form-control form-control-sm">
     </div>
     <div class="col-md-3">
-      <label for="confidence_search">Search Confidence:</label>
-      <input type="text" id="confidence_search" name="confidence_search" class="form-control form-control-sm">
+        <label for="confidence_search">Filter Confidence:</label>
+        <input type="text" id="confidence_search" name="confidence_search" class="form-control form-control-sm">
     </div>
-  </div>
-  <br>
-  <table id="data" class="table table-striped">
+</div>
+<br>
+<table id="data" class="table table-striped">
     <thead>
-      <tr>
-        <th>lhs_attribute</th>
+    <tr>
+        <th>
+            <label for="latt">Chose left attribute:</label>
+            <form id="my-form1" action="{{ url_for('api_data') }}" method="post">
+                <select id="latt" name="latt">
+                    <option value="None">None</option>
+                    {% for column in column_names %}
+                    <option value="{{ column }}" {% if column== column_name %}selected{% endif %}>{{ column }}</option>
+                    {% endfor %}
+                </select>
+            </form>
+        </th>
         <th>lhs_value</th>
-        <th>rhs_attribute</th>
+        <th>
+            <label for="ratt">Chose left attribute:</label>
+            <form id="my-form2" action="{{ url_for('api_data') }}" method="post">
+            <select id="ratt" name="ratt">
+                <option value="None">None</option>
+                {% for column in r_column_names %}
+                <option value="{{ column }}" {% if column== r_column_name %}selected{% endif %}>{{ column }}</option>
+                {% endfor %}
+            </select>
+            </form>
+        </th>
         <th>rhs_value</th>
         <th>support</th>
         <th>confidence</th>
         <th>lift</th>
         <th>frequency</th>
-      </tr>
+    </tr>
     </thead>
     <tbody>
     </tbody>
-  </table>
+</table>
 {% endblock %}
 
 
 {% block scripts %}
-  <script>
-    $(document).ready(function () {
-      var table = $('#data').DataTable({
+<script>
+   $(document).ready(function() {
+    var table = $('#data').DataTable({
         ajax: '/api/data',
         serverSide: true,
         columns: [
-          {data: 'lhs_attribute', orderable: false, searchable: false},
-          {data: 'lhs_value', orderable: false, searchable: false},
-          {data: 'rhs_attribute', orderable: false, searchable: false},
-          {data: 'rhs_value', orderable: false, searchable: false},
-          {data: 'support', orderable: false, searchable: false},
-          {data: 'confidence', name: 'confidence', searchable: true},
-          {data: 'lift', name: 'lift', searchable: true},
-          {data: 'frequency', orderable: false, searchable: false}
+            {data: 'lhs_attribute', orderable: false, searchable: false},
+            {data: 'lhs_value', orderable: false, searchable: false},
+            {data: 'rhs_attribute', orderable: false, searchable: false},
+            {data: 'rhs_value', orderable: false, searchable: false},
+            {data: 'support', orderable: true, searchable: false},
+            {data: 'confidence', name: 'confidence', searchable: false},
+            {data: 'lift', name: 'lift', searchable: false},
+            {data: 'frequency', orderable: true, searchable: false}
         ],
-      });
-      // Add the event listeners for the search boxes
-      $('#lift_search').on('keyup', function () {
-        table.column('lift:name').search($('#lift_search').val()).draw()
-      });
-
-      $('#confidence_search').on('keyup', function () {
-        table.column('confidence:name').search($('#confidence_search').val()).draw()
-      });
     });
-  </script>
+
+    $('#my-form1').on('change', function(event) {
+        event.preventDefault();
+        var formData = $(this).serialize();
+        $.ajax({
+            url: '/api/data',
+            data: formData,
+            dataType: 'json',
+            type: 'GET',
+            success: function(data) {
+                table.clear();
+                table.rows.add(data).draw();
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                console.log(thrownError);
+            }
+        });
+    });
+
+    $('#lift_search').on('keyup', function(event) {
+        event.preventDefault();
+        var formData = $(this).serialize();
+        $.ajax({
+            url: '/api/data',
+            data: formData,
+            dataType: 'json',
+            type: 'GET',
+            success: function(data) {
+                table.clear();
+                table.rows.add(data).draw();
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                console.log(thrownError);
+            }
+        });
+    });
+    $('#my-form2').on('change', function(event) {
+        event.preventDefault();
+        var formData = $(this).serialize();
+        $.ajax({
+            url: '/api/data',
+            data: formData,
+            dataType: 'json',
+            type: 'GET',
+            success: function(data) {
+                table.clear();
+                table.rows.add(data).draw();
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                console.log(thrownError);
+            }
+        });
+    });
+});
+</script>
 {% endblock %}
