@@ -67,7 +67,7 @@ def api_data():
                 except:
                     pass
         else:
-            data_filter = data_filter.query('lift {}'.format(search_lift))
+            data_filter = data_filter
             search_lift = ""
 
     if search_confidence_ is not None or search_confidence != "":
@@ -81,7 +81,7 @@ def api_data():
                 except:
                     pass
         else:
-            data_filter = data_filter.query('confidence {}'.format(search_confidence))
+            data_filter = data_filter
             search_confidence = ""
 
     if search_support_ is not None or search_support != "":
@@ -95,7 +95,7 @@ def api_data():
                 except:
                     pass
         else:
-            data_filter = data_filter.query('support {}'.format(search_support))
+            data_filter = data_filter
             search_support = ""
 
     if search_frequency_ is not None or search_frequency != "":
@@ -109,7 +109,7 @@ def api_data():
                 except:
                     pass
         else:
-            data_filter = data_filter.query('frequency {}'.format(search_frequency))
+            data_filter = data_filter
             search_frequency = ""
 
     if search_lhs_value_ is not None or search_lhs_value != "":
@@ -124,7 +124,7 @@ def api_data():
                     pass
         else:
             # If the search value is an empty string, clear the search filter
-            data_filter = data_filter.query('lhs_value {}'.format(search_lhs_value))
+            data_filter = data_filter
             search_lhs_value = ""
 
     if search_rhs_value_ is not None or search_rhs_value != "":
@@ -138,7 +138,7 @@ def api_data():
                 except:
                     pass
         else:
-            data_filter = data_filter.query('rhs_value {}'.format(search_rhs_value))
+            data_filter = data_filter
             search_rhs_value = ""
 
     req = request.args.to_dict()
@@ -153,8 +153,13 @@ def api_data():
 
     if leftAttribute != "None":
         data_filter = data_filter.query('lhs_attribute == "{}"'.format(leftAttribute))
+    else:
+        data_filter = data_filter
+            
     if rigthAttribute != "None":
         data_filter = data_filter.query('rhs_attribute == "{}"'.format(rigthAttribute))
+    else:
+        data_filter = data_filter
 
     to_be_filter = data_filter.columns[order]
     data_filter.sort_values(by=to_be_filter, axis="index", ascending=direction, inplace=True)
