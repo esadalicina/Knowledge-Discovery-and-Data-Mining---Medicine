@@ -26,8 +26,8 @@ def index():
     
     first = df["lhs_attribute"].unique()
     second = df["rhs_attribute"].unique()
-    first = np.insert(np.asarray(first), 0, "None")
-    second = np.insert(np.asarray(second), 0, "None")
+    first = np.asarray(first)
+    second = np.asarray(second)
 
     return render_template('server_table.html', title='Assosiation Table', l_column_names=first, r_column_names=second)
 
