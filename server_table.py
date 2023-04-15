@@ -23,12 +23,7 @@ direction = True
 def index():
     with open("association2NoFilter.csv", "r") as f:
         df = pd.read_csv(f)
-    column_names = list(df.columns)
-
-    # Get the unique values in each column
-    unique_values = {}
-    for column in column_names:
-        unique_values[column] = list(df[column].unique())
+    
     first = df["lhs_attribute"].unique()
     second = df["rhs_attribute"].unique()
     first = np.insert(np.asarray(first), 0, "None")
