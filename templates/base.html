@@ -18,8 +18,15 @@
             // Listen for the change event of the select element
             $('#latt').on('change', function() {
                 // Submit the form when the value changes
-                $('#my-form').submit();
+                $('#my-form1').submit();
             });
+            
+            // Listen for the change event of the select element
+            $('#ratt').on('change', function() {
+                // Submit the form when the value changes
+                $('#my-form2').submit();
+            });
+            
             var table = $('#data').DataTable();
 
             // Add the event listeners for the search boxes

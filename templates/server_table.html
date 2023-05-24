@@ -24,7 +24,7 @@
 
         <th>
             <label for="ratt">Chose right attribute:</label>
-            <form id="my-form3" action="{{ url_for('api_data') }}" method="post">
+            <form id="my-form2" action="{{ url_for('api_data') }}" method="post">
             <select id="ratt" name="ratt">
                 <option value="None">None</option>
                 {% for column in r_column_names %}
@@ -125,7 +125,7 @@
         });
     });
 
-    $('#my-form3').on('change', function(event) {
+    $('#my-form2').on('change', function(event) {
         event.preventDefault();
         var formData = $(this).serialize();
         $.ajax({
